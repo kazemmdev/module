@@ -1,8 +1,8 @@
 <?php
 
-namespace Kazemmdev\Tests\Moduler;
+namespace Kazemmdev\Tests\Module;
 
-use Kazemmdev\Moduler\ModuleServiceProvider;
+use Kazemmdev\Module\ModuleServiceProvider;
 use Orchestra\Testbench\TestCase as Orchestra;
 
 abstract class TestCase extends Orchestra

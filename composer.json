@@ -1,5 +1,5 @@
 {
-  "name": "kazemmdev/moduler",
+  "name": "kazemmdev/module",
   "description": "a laravel module maker",
   "type": "library",
   "license": "MIT",
@@ -11,12 +11,12 @@
   ],
   "autoload": {
     "psr-4": {
-      "Kazemmdev\\Moduler\\": "src/"
+      "Kazemmdev\\Module\\": "src/"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "Kazemmdev\\Tests\\Moduler\\": "tests/"
+      "Kazemmdev\\Tests\\Module\\": "tests/"
     }
   },
   "minimum-stability": "dev",
@@ -47,7 +47,7 @@
   "exra": {
     "laravel": {
       "providers": [
-        "Kazemmdev\\Moduler\\ModuleServiceProvider"
+        "Kazemmdev\\Module\\ModuleServiceProvider"
       ]
     }
   }

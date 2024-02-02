@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Kazemmdev\Moduler\Commands;
+namespace Kazemmdev\Module\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\File;

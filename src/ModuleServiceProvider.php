@@ -1,9 +1,9 @@
 <?php
 
-namespace Kazemmdev\Moduler;
+namespace Kazemmdev\Module;
 
 use Illuminate\Support\ServiceProvider;
-use Kazemmdev\Moduler\Commands\ModuleCommand;
+use Kazemmdev\Module\Commands\ModuleCommand;
 
 class ModuleServiceProvider extends ServiceProvider
 {
