@@ -1,9 +1,9 @@
 # Laravel Module Maker
 
 <!-- BADGES_START -->
-[![Latest Version](https://img.shields.io/github/release/kazemmdev/http-status.svg?style=flat-square)](https://github.com/kazemmdev/modular/releases)
-![run-tests](https://github.com/kazemmdev/modular/workflows/run-tests/badge.svg?label=tests)
-[![Total Downloads](https://img.shields.io/packagist/dt/kazemmdev/modular.svg?style=flat-square)](https://packagist.org/packages/kazemmdev/modular)
+[![Latest Version](https://img.shields.io/github/release/kazemmdev/module.svg?style=flat-square)](https://github.com/kazemmdev/module/releases)
+![run-tests](https://github.com/kazemmdev/module/workflows/run-tests/badge.svg?label=tests)
+[![Total Downloads](https://img.shields.io/packagist/dt/kazemmdev/module.svg?style=flat-square)](https://packagist.org/packages/kazemmdev/module)
 
 Enhance your Laravel application with modular design using Laravel Module Maker. This package simplifies the process of creating and managing modules in a Laravel project, allowing for a more organized and scalable codebase.
 
@@ -18,7 +18,7 @@ Enhance your Laravel application with modular design using Laravel Module Maker.
 To install the package, run the following command in your terminal:
 
 ```bash
-composer require kazemmdev/moduler
+composer require kazemmdev/module
 ```
 
 ## Usage
