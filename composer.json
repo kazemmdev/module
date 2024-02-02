@@ -22,16 +22,16 @@
   "minimum-stability": "dev",
   "require": {
     "php": "^8.1",
-    "illuminate/console": "*",
-    "illuminate/support": "*"
+    "illuminate/console": "^10.2",
+    "illuminate/support": "^10.2"
   },
   "require-dev": {
-    "orchestra/testbench": "9.x-dev",
-    "pestphp/pest": "3.x-dev"
+    "orchestra/testbench": "8.x-dev",
+    "pestphp/pest": "2.x-dev"
   },
   "scripts": {
-    "test": "./vendor/bbin/pest",
-    "test-coverage": "./vendor/bbin/pest --coverage"
+    "test": "./vendor/bin/pest",
+    "test-coverage": "./vendor/bin/pest --coverage"
   },
   "scripts-descriptions": {
     "test": "Run pest php test suite",

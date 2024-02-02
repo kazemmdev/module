@@ -7,7 +7,6 @@ namespace Kazemmdev\Module\Commands;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
-use Illuminate\Filesystem\Filesystem;
 
 class ModuleCommand extends Command
 {
