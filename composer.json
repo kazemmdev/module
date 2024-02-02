@@ -1,5 +1,5 @@
 {
-  "name": "kazem/moduler",
+  "name": "kazemmdev/moduler",
   "description": "a laravel module maker",
   "type": "library",
   "license": "MIT",
@@ -9,9 +9,6 @@
       "email": "k90mirzaei@gmail.com"
     }
   ],
-  "require": {
-    "php": "^8.1"
-  },
   "autoload": {
     "psr-4": {
       "Kazemmdev\\Moduler\\": "src/"
@@ -22,5 +19,36 @@
       "Kazemmdev\\Tests\\Moduler\\": "tests/"
     }
   },
-  "minimum-stability": "dev"
+  "minimum-stability": "dev",
+  "require": {
+    "php": "^8.1",
+    "illuminate/console": "*",
+    "illuminate/support": "*"
+  },
+  "require-dev": {
+    "orchestra/testbench": "9.x-dev",
+    "pestphp/pest": "3.x-dev"
+  },
+  "scripts": {
+    "test": "./vendor/bbin/pest",
+    "test-coverage": "./vendor/bbin/pest --coverage"
+  },
+  "scripts-descriptions": {
+    "test": "Run pest php test suite",
+    "test-coverage": "Run pest php test suite with coverage report"
+  },
+  "config": {
+    "optimize-autoloader": true,
+    "sort-packages": true,
+    "allow-plugins": {
+      "pestphp/pest-plugin": true
+    }
+  },
+  "exra": {
+    "laravel": {
+      "providers": [
+        "Kazemmdev\\Moduler\\ModuleServiceProvider"
+      ]
+    }
+  }
 }

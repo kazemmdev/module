@@ -1,0 +1,29 @@
+<?php
+
+declare(strict_types=1);
+
+namespace {{ namespace }};
+
+use Carbon\CarbonInterface;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+/**
+ * Model
+ *
+ * @property int                  id
+ * @property string               name
+ * @property null|CarbonInterface created_at
+ * @property null|CarbonInterface updated_at
+ */
+class {{ class }} extends Model
+{
+    use HasFactory;
+
+    public $guarded = [];
+
+    public static function newFactory(): UserFactory
+    {
+        return {{ class }}Factory::new();
+    }
+}

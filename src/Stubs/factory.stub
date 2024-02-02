@@ -1,0 +1,17 @@
+<?php
+
+declare(strict_types=1);
+
+namespace {{ namespace }};
+
+use Database\Factories\BaseFactory;
+
+class {{ class }}Factory extends BaseFactory
+{
+    public function definition(): array
+    {
+        return [
+            'name' => fake()->name(),
+        ];
+    }
+}
