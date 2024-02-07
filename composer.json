@@ -19,11 +19,11 @@
       "Kazemmdev\\Tests\\Module\\": "tests/"
     }
   },
-  "minimum-stability": "dev",
+  "minimum-stability": "v1",
   "require": {
     "php": "^8.1",
-    "illuminate/console": "^10.2",
-    "illuminate/support": "^10.2"
+    "illuminate/console": "^9",
+    "illuminate/support": "^9"
   },
   "require-dev": {
     "orchestra/testbench": "8.x-dev",
