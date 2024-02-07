@@ -19,7 +19,7 @@
       "Kazemmdev\\Tests\\Module\\": "tests/"
     }
   },
-  "minimum-stability": "v1",
+  "minimum-stability": "stable",
   "require": {
     "php": "^8.1",
     "illuminate/console": "^9",
