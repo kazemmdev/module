@@ -13,46 +13,75 @@ class ModuleCommand extends Command
     protected $signature = 'make:module {name}';
     protected $description = 'Create a new module command';
 
+    protected string $model;
+    protected string $namespace;
+    protected string $targetPath;
+
+
     public function handle(): void
     {
         $module = $this->argument('name');
-        $model = ucfirst(Str::singular($module));
-        $namespace = ucfirst(Str::plural($module));
-        $targetPath = $this->targetPath() . $namespace;
 
-        // Create the base module directory
-        $this->createDirectory($targetPath);
+        $this->model      = ucfirst(Str::singular($module));
+        $this->namespace  = ucfirst(Str::plural($module));
+        $this->targetPath = $this->targetPath() . $this->namespace;
 
-        // Define file types and their respective directories
+        $this->createDirectory($this->targetPath);
+
+        $this->createBaseModel();
+        $this->createControllers();
+    }
+
+    protected function createBaseModel(): void
+    {
         $fileTypes = [
-            'controller' => 'Controllers',
-            'request' => 'Requests',
-            'resource' => 'Resources',
-            'test' => 'Tests',
-            'model' => '',
+            'test'    => 'Tests',
+            'model'   => '',
             'factory' => '',
             'service' => ''
         ];
 
-        // Process each file type
         foreach ($fileTypes as $type => $dir) {
-            $filePath = $targetPath . '/' . $dir . '/' . $model . ucfirst($type) . '.php';
-            $this->createFileFromStub($type, $filePath, $model, $namespace);
+            $filePath = $this->targetPath . '/' . $dir . '/' . $this->model . ucfirst($type) . '.php';
+            $this->createFileFromStub($type, $filePath);
         }
     }
 
-    protected function createDirectory(string $path): void
+    protected function createControllers(): void
     {
-        if (!File::isDirectory($path)) {
-            File::makeDirectory($path, 0755, true, true);
-        }
+        // requests
+        $filePath = $this->targetPath . '/Requests/Store' . $this->model . 'Request.php';
+        $this->createFileFromStub('request', $filePath);
+
+        $filePath = $this->targetPath . '/Requests/Update' . $this->model . 'Request.php';
+        $this->createFileFromStub('request', $filePath);
+
+        // resources
+        $filePath = $this->targetPath . '/Resources/' . $this->model . 'Resource.php';
+        $this->createFileFromStub('resource', $filePath);
+
+        // controllers
+        $filePath = $this->targetPath . '/Controllers/Index' . $this->model . 'Controller.php';
+        $this->createFileFromStub('controller', $filePath);
+
+        $filePath = $this->targetPath . '/Controllers/Show' . $this->model . 'Controller.php';
+        $this->createFileFromStub('controller', $filePath);
+
+        $filePath = $this->targetPath . '/Controllers/Update' . $this->model . 'Controller.php';
+        $this->createFileFromStub('controller', $filePath);
+
+        $filePath = $this->targetPath . '/Controllers/Store' . $this->model . 'Controller.php';
+        $this->createFileFromStub('controller', $filePath);
+
+        $filePath = $this->targetPath . '/Controllers/Destroy' . $this->model . 'Controller.php';
+        $this->createFileFromStub('controller', $filePath);
     }
 
-    protected function createFileFromStub(string $type, string $filePath, string $model, string $namespace): void
+    protected function createFileFromStub(string $type, string $filePath): void
     {
         $template = str_replace(
             ['{{ namespace }}', '{{ class }}'],
-            ["Modules\\$namespace\\" . ucfirst(Str::plural($type)), $model],
+            ["Modules\\$this->namespace\\" . ucfirst(Str::plural($type)), $this->model],
             $this->getStub($type)
         );
 
@@ -62,6 +91,13 @@ class ModuleCommand extends Command
 
         // Write the file
         File::put($filePath, $template);
+    }
+
+    protected function createDirectory(string $path): void
+    {
+        if (!File::isDirectory($path)) {
+            File::makeDirectory($path, 0755, true, true);
+        }
     }
 
     protected function targetPath(): string

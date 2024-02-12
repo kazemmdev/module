@@ -9,7 +9,7 @@ use Illuminate\Http\JsonResponse;
 
 class {{ class }}Controller extends Controller
 {
-    public function index(): JsonResponse
+    public function __invoke(): JsonResponse
     {
         return response([], 200);
     }
