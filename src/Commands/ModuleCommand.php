@@ -55,10 +55,10 @@ class ModuleCommand extends Command
     {
         // requests
         $filePath = $this->targetPath . '/Requests/StoreRequest.php';
-        $this->createFileFromStub('request', $filePath);
+        $this->createFileFromStub('store.request', $filePath);
 
         $filePath = $this->targetPath . '/Requests/UpdateRequest.php';
-        $this->createFileFromStub('request', $filePath);
+        $this->createFileFromStub('update.request', $filePath);
 
         // resources
         $filePath = $this->targetPath . '/Resources/' . $this->model . 'Resource.php';
