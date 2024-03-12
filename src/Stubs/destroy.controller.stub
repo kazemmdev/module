@@ -10,8 +10,8 @@ use Modules\{{ namespace }}\{{ class }};
 
 class DestroyController extends Controller
 {
-    public function __invoke({{ class }} ${{ strtolower(class) }}): JsonResponse
+    public function __invoke({{ class }} ${{ lower(class) }}): JsonResponse
     {
-        return $this->success(${{ strtolower(class) }}->delete());
+        return $this->success(${{ lower(class) }}->delete());
     }
 }

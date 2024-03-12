@@ -11,8 +11,8 @@ use Modules\{{ namespace }}\Requests\UpdateRequest;
 
 class UpdateController extends Controller
 {
-    public function __invoke({{ class }} ${{ strtolower(class) }}, UpdateRequest $request): JsonResponse
+    public function __invoke({{ class }} ${{ lower(class) }}, UpdateRequest $request): JsonResponse
     {
-        return $this->success(${{ strtolower(class) }}->update($request->validated()));
+        return $this->success(${{ lower(class) }}->update($request->validated()));
     }
 }

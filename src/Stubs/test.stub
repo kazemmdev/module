@@ -8,31 +8,31 @@ use Modules\{{ namespace }}\{{ class }};
 beforeEach(fn() => $this->seed(DatabaseSeeder::class));
 
 it("rejects request for non admin", function () {
-    $this->get("/api/manage/{{ strtolower(namespace) }}")->assertStatus(Http::UNAUTHORIZED());
+    $this->get("/api/manage/{{ lower(namespace) }}")->assertStatus(Http::UNAUTHORIZED());
 });
 
-it("returns list of {{ strtolower(namespace) }} to admin", function () {
+it("returns list of {{ lower(namespace) }} to admin", function () {
     $this->admin();
-    $this->get("/api/manage/{{ strtolower(namespace) }}")->assertStatus(Http::OK());
+    $this->get("/api/manage/{{ lower(namespace) }}")->assertStatus(Http::OK());
 });
 
-it("creates a new {{ strtolower(class) }} by admin", function () {
+it("creates a new {{ lower(class) }} by admin", function () {
     $this->admin();
-    $this->post("/api/manage/{{ strtolower(namespace) }}", ['name' => 'test'])->assertStatus(Http::CREATED());
-    $this->assertDataBaseHas('{{ strtolower(namespace) }}', ['name' => 'test']);
+    $this->post("/api/manage/{{ lower(namespace) }}", ['name' => 'test'])->assertStatus(Http::CREATED());
+    $this->assertDataBaseHas('{{ lower(namespace) }}', ['name' => 'test']);
 });
 
-it("updates a {{ strtolower(class) }} by admin", function () {
+it("updates a {{ lower(class) }} by admin", function () {
     $this->admin();
-    ${{ strtolower(class) }} = {{ class }}::factory()->create();
-    $this->patch("/api/manage/{{ strtolower(namespace) }}/" . ${{ strtolower(class) }}->id, ['name' => 'update'])->assertStatus(Http::OK());
-    $this->assertDataBaseHas('{{ strtolower(namespace) }}', ['name' => 'update']);
+    ${{ lower(class) }} = {{ class }}::factory()->create();
+    $this->patch("/api/manage/{{ lower(namespace) }}/" . ${{ lower(class) }}->id, ['name' => 'update'])->assertStatus(Http::OK());
+    $this->assertDataBaseHas('{{ lower(namespace) }}', ['name' => 'update']);
 });
 
-it("delete a {{ strtolower(class) }} by admin", function () {
+it("delete a {{ lower(class) }} by admin", function () {
     $this->admin();
-    ${{ strtolower(class) }} = {{ class }}::factory()->create();
-    $this->delete("/api/manage/{{ strtolower(namespace) }}/" . ${{ strtolower(class) }}->id)->assertStatus(Http::OK());
+    ${{ lower(class) }} = {{ class }}::factory()->create();
+    $this->delete("/api/manage/{{ lower(namespace) }}/" . ${{ lower(class) }}->id)->assertStatus(Http::OK());
 
-    $this->assertNull({{ class }}::find(${{ strtolower(class) }}->id));
+    $this->assertNull({{ class }}::find(${{ lower(class) }}->id));
 });

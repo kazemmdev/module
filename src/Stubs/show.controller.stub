@@ -11,8 +11,8 @@ use Modules\{{ namespace }}\Resources\{{ class }}Resource;
 
 class ShowController extends Controller
 {
-    public function __invoke({{ class }} ${{ strtolower(class) }}): JsonResponse
+    public function __invoke({{ class }} ${{ lower(class) }}): JsonResponse
     {
-        return response(new {{ class }}Resource(${{ strtolower(class) }});
+        return response(new {{ class }}Resource(${{ lower(class) }});
     }
 }

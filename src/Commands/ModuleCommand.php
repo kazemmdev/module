@@ -35,15 +35,15 @@ class ModuleCommand extends Command
     protected function createBaseModel(): void
     {
         // Model
-        $filePath = $this->targetPath . '/' . $this->model .  '.php';
+        $filePath = $this->targetPath . '/' . $this->model . '.php';
         $this->createFileFromStub('model', $filePath);
 
         // Factory
-        $filePath = $this->targetPath . '/' . $this->model .  'Factory.php';
+        $filePath = $this->targetPath . '/' . $this->model . 'Factory.php';
         $this->createFileFromStub('factory', $filePath);
 
         // Service
-        $filePath = $this->targetPath . '/' . $this->model .  'Service.php';
+        $filePath = $this->targetPath . '/' . $this->model . 'Service.php';
         $this->createFileFromStub('service', $filePath);
 
         // Test
@@ -84,8 +84,8 @@ class ModuleCommand extends Command
     protected function createFileFromStub(string $type, string $filePath): void
     {
         $template = str_replace(
-            ['{{ namespace }}', '{{ class }}'],
-            [$this->namespace, $this->model],
+            ['{{ namespace }}', '{{ class }}', '{{ lower(namespace) }}', '{{ lower(class) }}'],
+            [$this->namespace, $this->model, strtoupper($this->namespace), strtoupper($this->model)],
             $this->getStub($type)
         );
 
