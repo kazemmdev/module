@@ -34,17 +34,21 @@ class ModuleCommand extends Command
 
     protected function createBaseModel(): void
     {
-        $fileTypes = [
-            'test'    => 'Tests',
-            'model'   => '',
-            'factory' => '',
-            'service' => ''
-        ];
+        // Model
+        $filePath = $this->targetPath . '/' . $this->model .  '.php';
+        $this->createFileFromStub('model', $filePath);
 
-        foreach ($fileTypes as $type => $dir) {
-            $filePath = $this->targetPath . '/' . $dir . '/' . $this->model . ucfirst($type) . '.php';
-            $this->createFileFromStub($type, $filePath);
-        }
+        // Factory
+        $filePath = $this->targetPath . '/' . $this->model .  'Factory.php';
+        $this->createFileFromStub('factory', $filePath);
+
+        // Service
+        $filePath = $this->targetPath . '/' . $this->model .  'Service.php';
+        $this->createFileFromStub('service', $filePath);
+
+        // Test
+        $filePath = $this->targetPath . '/Tests/Feature.php';
+        $this->createFileFromStub('test', $filePath);
     }
 
     protected function createControllers(): void
@@ -65,16 +69,16 @@ class ModuleCommand extends Command
         $this->createFileFromStub('index.controller', $filePath);
 
         $filePath = $this->targetPath . '/Controllers/ShowController.php';
-        $this->createFileFromStub('controller', $filePath);
+        $this->createFileFromStub('show.controller', $filePath);
 
         $filePath = $this->targetPath . '/Controllers/UpdateController.php';
-        $this->createFileFromStub('controller', $filePath);
+        $this->createFileFromStub('update.controller', $filePath);
 
         $filePath = $this->targetPath . '/Controllers/StoreController.php';
-        $this->createFileFromStub('controller', $filePath);
+        $this->createFileFromStub('store.controller', $filePath);
 
         $filePath = $this->targetPath . '/Controllers/DestroyController.php';
-        $this->createFileFromStub('controller', $filePath);
+        $this->createFileFromStub('destroy.controller', $filePath);
     }
 
     protected function createFileFromStub(string $type, string $filePath): void
