@@ -34,6 +34,8 @@ class ModuleCommand extends Command
 
     protected function createBaseModel(): void
     {
+        $this->info("Creating...");
+
         // Model
         $filePath = $this->targetPath . '/' . $this->model . '.php';
         $this->createFileFromStub('model', $filePath);
@@ -49,6 +51,8 @@ class ModuleCommand extends Command
         // Test
         $filePath = $this->targetPath . '/Tests/Feature.php';
         $this->createFileFromStub('test', $filePath);
+
+        $this->info("Base model created successfully!");
     }
 
     protected function createControllers(): void
@@ -79,6 +83,9 @@ class ModuleCommand extends Command
 
         $filePath = $this->targetPath . '/Controllers/DestroyController.php';
         $this->createFileFromStub('destroy.controller', $filePath);
+
+        $this->info("");
+        $this->info("Controllers created successfully!");
     }
 
     protected function createFileFromStub(string $type, string $filePath): void
