@@ -84,7 +84,6 @@ class ModuleCommand extends Command
         $filePath = $this->targetPath . '/Controllers/DestroyController.php';
         $this->createFileFromStub('destroy.controller', $filePath);
 
-        $this->info("");
         $this->info("Controllers created successfully!");
     }
 
