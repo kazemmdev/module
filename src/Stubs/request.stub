@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace {{ namespace }};
+namespace Modules\{{ namespace }}\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class {{ class }}Request extends FormRequest
+class StoreRequest extends FormRequest
 {
     public function authorize(): bool
     {
-        return true;
+        return auth()->check();
     }
 
     public function rules(): array

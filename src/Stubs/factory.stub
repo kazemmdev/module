@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace {{ namespace }};
+namespace Modules\{{ namespace }};
 
 use Database\Factories\BaseFactory;
 

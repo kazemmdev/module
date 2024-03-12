@@ -1,7 +1,38 @@
 <?php
 
-it('performs a feature test', function () {
-    $response = $this->get('/');
+use Database\Seeders\DatabaseSeeder;
+use Kazemmdev\HttpStatus\Http;
+use Modules\Categories\{{ class }};
+use Modules\{{ namespace }}\{{ class }};
 
-    $response->assertStatus(200);
+beforeEach(fn() => $this->seed(DatabaseSeeder::class));
+
+it("rejects request for non admin", function () {
+    $this->get("/api/manage/{{ strtolower(namespace) }}")->assertStatus(Http::UNAUTHORIZED());
+});
+
+it("returns list of {{ strtolower(namespace) }} to admin", function () {
+    $this->admin();
+    $this->get("/api/manage/{{ strtolower(namespace) }}")->assertStatus(Http::OK());
+});
+
+it("creates a new {{ strtolower(class) }} by admin", function () {
+    $this->admin();
+    $this->post("/api/manage/{{ strtolower(namespace) }}", ['name' => 'test'])->assertStatus(Http::CREATED());
+    $this->assertDataBaseHas('{{ strtolower(namespace) }}', ['name' => 'test']);
+});
+
+it("updates a {{ strtolower(class) }} by admin", function () {
+    $this->admin();
+    ${{ strtolower(class) }} = {{ class }}::factory()->create();
+    $this->patch("/api/manage/{{ strtolower(namespace) }}/" . ${{ strtolower(class) }}->id, ['name' => 'update'])->assertStatus(Http::OK());
+    $this->assertDataBaseHas('{{ strtolower(namespace) }}', ['name' => 'update']);
+});
+
+it("delete a {{ strtolower(class) }} by admin", function () {
+    $this->admin();
+    ${{ strtolower(class) }} = {{ class }}::factory()->create();
+    $this->delete("/api/manage/{{ strtolower(namespace) }}/" . ${{ strtolower(class) }}->id)->assertStatus(Http::OK());
+
+    $this->assertNull({{ class }}::find(${{ strtolower(class) }}->id));
 });

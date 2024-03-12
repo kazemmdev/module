@@ -2,11 +2,12 @@
 
 declare(strict_types=1);
 
-namespace {{ namespace }};
+namespace Modules\{{ namespace }};
 
 use Carbon\CarbonInterface;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Shared\Filters\QueryFilter;
 
 /**
  * Model
@@ -19,10 +20,11 @@ use Illuminate\Database\Eloquent\Model;
 class {{ class }} extends Model
 {
     use HasFactory;
+    use QueryFilter;
 
     public $guarded = [];
 
-    public static function newFactory(): UserFactory
+    public static function newFactory(): {{ class }}Factory
     {
         return {{ class }}Factory::new();
     }

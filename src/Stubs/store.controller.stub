@@ -1,0 +1,19 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Modules\{{ namespace }}\Controllers;
+
+use App\Http\Controllers\Controller;
+use Illuminate\Http\JsonResponse;
+use Kazemmdev\HttpStatus\Http;
+use Modules\{{ namespace }}\{{ class }};
+use Modules\{{ namespace }}\Requests\StoreRequest;
+
+class StoreController extends Controller
+{
+    public function __invoke(StoreRequest $request): JsonResponse
+    {
+        return $this->success({{ class }}::create($request->validated()), Http::CREATED());
+    }
+}

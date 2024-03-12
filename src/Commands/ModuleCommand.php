@@ -50,10 +50,10 @@ class ModuleCommand extends Command
     protected function createControllers(): void
     {
         // requests
-        $filePath = $this->targetPath . '/Requests/Store' . $this->model . 'Request.php';
+        $filePath = $this->targetPath . '/Requests/StoreRequest.php';
         $this->createFileFromStub('request', $filePath);
 
-        $filePath = $this->targetPath . '/Requests/Update' . $this->model . 'Request.php';
+        $filePath = $this->targetPath . '/Requests/UpdateRequest.php';
         $this->createFileFromStub('request', $filePath);
 
         // resources
@@ -61,19 +61,19 @@ class ModuleCommand extends Command
         $this->createFileFromStub('resource', $filePath);
 
         // controllers
-        $filePath = $this->targetPath . '/Controllers/Index' . $this->model . 'Controller.php';
+        $filePath = $this->targetPath . '/Controllers/IndexController.php';
+        $this->createFileFromStub('index.controller', $filePath);
+
+        $filePath = $this->targetPath . '/Controllers/ShowController.php';
         $this->createFileFromStub('controller', $filePath);
 
-        $filePath = $this->targetPath . '/Controllers/Show' . $this->model . 'Controller.php';
+        $filePath = $this->targetPath . '/Controllers/UpdateController.php';
         $this->createFileFromStub('controller', $filePath);
 
-        $filePath = $this->targetPath . '/Controllers/Update' . $this->model . 'Controller.php';
+        $filePath = $this->targetPath . '/Controllers/StoreController.php';
         $this->createFileFromStub('controller', $filePath);
 
-        $filePath = $this->targetPath . '/Controllers/Store' . $this->model . 'Controller.php';
-        $this->createFileFromStub('controller', $filePath);
-
-        $filePath = $this->targetPath . '/Controllers/Destroy' . $this->model . 'Controller.php';
+        $filePath = $this->targetPath . '/Controllers/DestroyController.php';
         $this->createFileFromStub('controller', $filePath);
     }
 
@@ -81,7 +81,7 @@ class ModuleCommand extends Command
     {
         $template = str_replace(
             ['{{ namespace }}', '{{ class }}'],
-            ["Modules\\$this->namespace\\" . ucfirst(Str::plural($type)), $this->model],
+            [$this->namespace, $this->model],
             $this->getStub($type)
         );
 

@@ -1,0 +1,17 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Modules\{{ namespace }}\Controllers;
+
+use App\Http\Controllers\Controller;
+use Illuminate\Http\JsonResponse;
+use Modules\{{ namespace }}\{{ class }};
+
+class DestroyController extends Controller
+{
+    public function __invoke({{ class }} ${{ strtolower(class) }}): JsonResponse
+    {
+        return $this->success(${{ strtolower(class) }}->delete());
+    }
+}
