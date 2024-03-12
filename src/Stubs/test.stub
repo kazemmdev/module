@@ -2,7 +2,6 @@
 
 use Database\Seeders\DatabaseSeeder;
 use Kazemmdev\HttpStatus\Http;
-use Modules\Categories\{{ class }};
 use Modules\{{ namespace }}\{{ class }};
 
 beforeEach(fn() => $this->seed(DatabaseSeeder::class));

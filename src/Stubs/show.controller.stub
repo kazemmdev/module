@@ -13,6 +13,6 @@ class ShowController extends Controller
 {
     public function __invoke({{ class }} ${{ lower(class) }}): JsonResponse
     {
-        return response(new {{ class }}Resource(${{ lower(class) }});
+        return $this->success(new {{ class }}Resource(${{ lower(class) }}));
     }
 }

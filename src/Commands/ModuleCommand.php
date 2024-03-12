@@ -85,7 +85,7 @@ class ModuleCommand extends Command
     {
         $template = str_replace(
             ['{{ namespace }}', '{{ class }}', '{{ lower(namespace) }}', '{{ lower(class) }}'],
-            [$this->namespace, $this->model, strtoupper($this->namespace), strtoupper($this->model)],
+            [$this->namespace, $this->model, strtolower($this->namespace), strtolower($this->model)],
             $this->getStub($type)
         );
 
